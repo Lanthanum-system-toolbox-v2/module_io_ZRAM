@@ -601,7 +601,7 @@ public class ZRAM implements LModule {
             //获取并保存每个已经激活的区块的尺寸与压缩算法
             //未激活的全部略过，懒得搞了
             size.add(ShellUtil.run("cat "+ZRAM_CONF_PATH+index+"/disksize",true));
-            algorithm.add(ShellUtil.run("cat "+ZRAM_CONF_PATH+index+"/comp_algorithm",true));
+            algorithm.add(StringToList.getCurrentZramAlgorithm(ShellUtil.run("cat "+ZRAM_CONF_PATH+index+"/comp_algorithm",true)));
         }
 
         //干掉所有已有的zram区块
